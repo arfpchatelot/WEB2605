@@ -3,8 +3,8 @@
 const zoneSize= document.querySelector("#txtSize");
 const btnIncrease= document.querySelector("#btnIncrease");
 const btnDecrease=document.getElementById("btnDecrease");
-const paragraphe= document.querySelector("#txt");
-//const paragraphe= document.getElementsByTagName("p");
+//const paragraphe= document.querySelector("#txt");
+const paragraphe= document.getElementsByTagName("p");
 
 function sizing (event) {
 
