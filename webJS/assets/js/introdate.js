@@ -6,15 +6,100 @@ const btnCalculate = document.querySelector("#calculate");
 const validation = document.querySelector(".result");
 validation.textContent += " traitement";
 
+//listeZodiaque.className="zodiaque";
+
+const mySection2 = document.querySelector("#signe");
+const zodiaque="Bélier,Taureau,Gémeaux,Cancer,Lion,Vierge,Balance,Scorpion,Sagittaire,Capricorne,Verseau,Poissons";
+let tabzodiaque=zodiaque.split(',');
+const listeZodiaque= document.createElement("ul");
+listeZodiaque.id="signes";
+listeZodiaque.classList.add("zodiaque");
+mySection2.appendChild(listeZodiaque);
+// for (let i = 0; i < tabzodiaque.length; i++) {
+ 
+//   const myli=document.createElement("li");
+//   myli.textContent=tabzodiaque[i];
+//   listeZodiaque.appendChild(myli);
+  
+// }
+
 function calculateAge() {
   let chaineBirthday = txtBirthday.value;
+  console.log(chaineBirthday);
   let delay = Date.parse(chaineBirthday); // durée en milliseconde depuis 1er janvier 1970 à minuit
   const birthDate = new Date(delay); //creation de l'objet date
+  let birthDay =birthDate.getDate();
+  let birthMonth=birthDate.getMonth()+1;
+console.log("mois : "+birthMonth+ " jour"+ birthDay);
+
+switch (birthMonth) {
+    case 1:
+
+      if (birthDay>=20) {
+        //verseau
+         console.log("verseau");
+        let myliSigne=document.createElement("li");
+        myliSigne.className="zodiaque";
+        myliSigne.textContent=tabzodiaque[10]; 
+        listeZodiaque.appendChild(myliSigne);
+      } else {
+        //capricone
+        console.log("capricorne");
+ let myliSigne=document.createElement("li");
+        myliSigne.className="zodiaque";
+        myliSigne.textContent=tabzodiaque[9]; 
+        listeZodiaque.appendChild(myliSigne);
+      }
+    break;
+
+    case 2:
+    
+    break;
+    case 3:
+    
+    break;
+    case 4:
+    
+    break;
+    case 5:
+    
+    break;
+    case 6:
+    
+    break;
+    case 7:
+    
+    break;
+    case 8:
+    
+    break;
+    case 9:
+    
+    break;
+    case 10:
+    
+    break;
+    case 11:
+    
+    break;
+    case 12:
+    
+    break;
+
+  default:
+   console.error("error sur la valeur du mois");
+    break;
+}
+
+
+
+
   const today = new Date(); // creation de l'objet date du jour
   const validationSummarize = document.createElement("p"); //creation d'un paragraphe HTML
   validationSummarize.id = "test"; //ajout d'un id pour utile pour JS
   validationSummarize.className = "summarize"; // ajout d'une classe pour mise en forme
   const mySection = document.querySelector("section"); // on va chercher la section dans la page
+
   mySection.appendChild(validationSummarize);
 
   if (birthDate > today) {
@@ -39,6 +124,11 @@ function calculateAge() {
     validationSummarize.innerHTML += ` <br> Il s'est écoulé <span class="bleu"> ${nbyear}</span> années depuis votre naissance.`;
   }
 }
+
+
+
+
+
 
 btnCalculate.addEventListener("click", function () {
   calculateAge();
