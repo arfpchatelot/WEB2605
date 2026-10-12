@@ -23,6 +23,7 @@ mySection2.appendChild(listeZodiaque);
   
 // }
 
+const enfant = document.getElementsByTagName("li");
 function calculateAge() {
   let chaineBirthday = txtBirthday.value;
   console.log(chaineBirthday);
@@ -34,8 +35,9 @@ console.log("mois : "+birthMonth+ " jour"+ birthDay);
 
 switch (birthMonth) {
     case 1:
-
-      if (birthDay>=20) {
+   
+     listeZodiaque.removeChild(enfant);
+      if (birthDay>19) {
         //verseau
          console.log("verseau");
         let myliSigne=document.createElement("li");
@@ -53,7 +55,24 @@ switch (birthMonth) {
     break;
 
     case 2:
-    
+     //poisson
+
+      listeZodiaque.removeChild(enfant);
+      if (birthDay>18) {
+         console.log("poisson");
+        let myliSigne=document.createElement("li");
+        myliSigne.className="zodiaque";
+        myliSigne.textContent=tabzodiaque[11]; 
+        listeZodiaque.appendChild(myliSigne);
+      } else {
+        //verseau
+        console.log("verseau");
+ let myliSigne=document.createElement("li");
+        myliSigne.className="zodiaque";
+        myliSigne.textContent=tabzodiaque[10]; 
+        listeZodiaque.appendChild(myliSigne);
+      }
+
     break;
     case 3:
     
