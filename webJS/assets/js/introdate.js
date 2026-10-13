@@ -1,124 +1,138 @@
 const txtBirthday = document.getElementById("birthday");
 const btnCalculate = document.querySelector("#calculate");
-// const tabResult= document.querySelectorAll("p");
+const mySection = document.querySelector("section"); // on va chercher la section dans la page
 
-// tabResult.forEach((el)=>{el.textContent="traitement formulaire"});
+
 const validation = document.querySelector(".result");
 validation.textContent += " traitement";
 
 //listeZodiaque.className="zodiaque";
 
 const mySection2 = document.querySelector("#signe");
-const zodiaque="Bélier,Taureau,Gémeaux,Cancer,Lion,Vierge,Balance,Scorpion,Sagittaire,Capricorne,Verseau,Poissons";
-let tabzodiaque=zodiaque.split(',');
-const listeZodiaque= document.createElement("ul");
-listeZodiaque.id="signes";
+const zodiaque =
+  "Bélier,Taureau,Gémeaux,Cancer,Lion,Vierge,Balance,Scorpion,Sagittaire,Capricorne,Verseau,Poissons";
+let tabzodiaque = zodiaque.split(",");
+const listeZodiaque = document.createElement("ul");
+listeZodiaque.id = "signes";
 listeZodiaque.classList.add("zodiaque");
 mySection2.appendChild(listeZodiaque);
 // for (let i = 0; i < tabzodiaque.length; i++) {
- 
+
 //   const myli=document.createElement("li");
 //   myli.textContent=tabzodiaque[i];
 //   listeZodiaque.appendChild(myli);
-  
+
 // }
 
-const enfant = document.getElementsByTagName("li");
+//const enfant = document.getElementsByTagName("li");
 function calculateAge() {
   let chaineBirthday = txtBirthday.value;
   console.log(chaineBirthday);
   let delay = Date.parse(chaineBirthday); // durée en milliseconde depuis 1er janvier 1970 à minuit
   const birthDate = new Date(delay); //creation de l'objet date
-  let birthDay =birthDate.getDate();
-  let birthMonth=birthDate.getMonth()+1;
-console.log("mois : "+birthMonth+ " jour"+ birthDay);
+  let birthDay = birthDate.getDate();
+  let birthMonth = birthDate.getMonth() + 1;
+  console.log("mois : " + birthMonth + " jour" + birthDay);
 
-switch (birthMonth) {
+  function createLi(_signeAstro) {
+    let myliSigne = document.createElement("li");
+    myliSigne.className = "zodiaque";
+    myliSigne.textContent = _signeAstro;
+    listeZodiaque.appendChild(myliSigne);
+  }
+
+  function createImg(_urlimg, _nameImg,_hook){
+    const myImg=document.createElement("img");
+     // myImg.src=_urlimg;
+      myImg.setAttribute("src",_urlimg);
+      myImg.id=_nameImg;
+      myImg.setAttribute("alt",_nameImg);
+      myImg.setAttribute("style","width:200px;height:auto");
+       _hook.appendChild(myImg); 
+  }
+
+  switch (birthMonth) {
     case 1:
-   
-     listeZodiaque.removeChild(enfant);
-      if (birthDay>19) {
+      listeZodiaque.childNodes.forEach((el) => {
+        el.remove();
+      });
+      //listeZodiaque.remove();
+      if (birthDay > 19) {
         //verseau
-         console.log("verseau");
-        let myliSigne=document.createElement("li");
-        myliSigne.className="zodiaque";
-        myliSigne.textContent=tabzodiaque[10]; 
-        listeZodiaque.appendChild(myliSigne);
+
+        console.log("verseau");
+        
+
+        //  myliSigne.textContent=tabzodiaque[10];
+        createLi(tabzodiaque[10]);
+        createImg("./assets/img/verseau.png","Verseau", mySection);
+
+
+
+        //
       } else {
         //capricone
+        listeZodiaque.childNodes.forEach((el) => {
+          el.remove();
+        });
         console.log("capricorne");
- let myliSigne=document.createElement("li");
-        myliSigne.className="zodiaque";
-        myliSigne.textContent=tabzodiaque[9]; 
-        listeZodiaque.appendChild(myliSigne);
+        createLi(tabzodiaque[9]);
+        createImg("./assets/img/capricorne.png","capricorne", mySection);
+        // myliSigne.textContent=tabzodiaque[9];
       }
-    break;
+      break;
 
     case 2:
-     //poisson
+      //poisson
 
-      listeZodiaque.removeChild(enfant);
-      if (birthDay>18) {
-         console.log("poisson");
-        let myliSigne=document.createElement("li");
-        myliSigne.className="zodiaque";
-        myliSigne.textContent=tabzodiaque[11]; 
-        listeZodiaque.appendChild(myliSigne);
+      //   listeZodiaque.remove();
+      if (birthDay > 18) {
+        console.log("poisson");
+
+        createLi(tabzodiaque[11]);
+        //  myliSigne.textContent=tabzodiaque[11];
       } else {
         //verseau
         console.log("verseau");
- let myliSigne=document.createElement("li");
-        myliSigne.className="zodiaque";
-        myliSigne.textContent=tabzodiaque[10]; 
-        listeZodiaque.appendChild(myliSigne);
+
+        createLi(tabzodiaque[10]);
+
+        //     myliSigne.textContent=tabzodiaque[10];
       }
 
-    break;
+      break;
     case 3:
-    
-    break;
+      break;
     case 4:
-    
-    break;
+      break;
     case 5:
-    
-    break;
+      break;
     case 6:
-    
-    break;
+      break;
     case 7:
-    
-    break;
+      break;
     case 8:
-    
-    break;
+      break;
     case 9:
-    
-    break;
+      break;
     case 10:
-    
-    break;
+      break;
     case 11:
-    
-    break;
+      break;
     case 12:
-    
-    break;
+      break;
 
-  default:
-   console.error("error sur la valeur du mois");
-    break;
-}
-
-
-
+    default:
+      console.error("error sur la valeur du mois");
+      break;
+  }
 
   const today = new Date(); // creation de l'objet date du jour
   const validationSummarize = document.createElement("p"); //creation d'un paragraphe HTML
   validationSummarize.id = "test"; //ajout d'un id pour utile pour JS
   validationSummarize.className = "summarize"; // ajout d'une classe pour mise en forme
-  const mySection = document.querySelector("section"); // on va chercher la section dans la page
-
+  
+  
   mySection.appendChild(validationSummarize);
 
   if (birthDate > today) {
@@ -144,11 +158,9 @@ switch (birthMonth) {
   }
 }
 
-
-
-
-
-
 btnCalculate.addEventListener("click", function () {
+  mySection.childNodes.forEach((el) => {
+    el.remove();
+  });
   calculateAge();
 });
