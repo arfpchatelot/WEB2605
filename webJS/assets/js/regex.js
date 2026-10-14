@@ -4,6 +4,7 @@ const txtName=document.querySelector("#myName");
 const chaine1 = document.querySelector("#myPassword1");
  const chaine2= document.querySelector("#myPassword2");
  const txtPhone= document.querySelector("#myPhone");
+ const txtdate=document.getElementById("myBirthDate");
 
 mybtnSubmit.addEventListener("click",
     function(event){
@@ -11,18 +12,25 @@ mybtnSubmit.addEventListener("click",
 
         const myForm=document.querySelector("form");
 
-        if (validateName(txtName.value)==true  && validatePhoneNumber(txtPhone.value)==true ) {
-        alert("formulaire OK");
-           // myForm.submit();   
+        if (
+            validateBirthDate(txtdate.value)&&
+            validateName(txtName.value)==true  
+        && validatePhoneNumber(txtPhone.value)==true 
+      //  && validatePassword(chaine1,chaine2)==true
+     
+    ) {
+        
+    
+            myForm.submit();   
         }else{
 
-            alert("saisie du nom incorrect! numero faux ");
+            alert("saisie du nom incorrect! numero faux, ou date anniv fausse ");
         }
 
     }
 )
 /**
- * 
+ * documentation d'une fonction
  * @param {*} chaine 
  */
 
@@ -72,4 +80,26 @@ function validatePhoneNumber(_inputchaine)
         return true ;
     }
     return false;
+}
+
+/**
+ * Contrôle la validité d'une date
+ * @param {String} _birthDate la date à vérifier
+ * @returns {Boolean} 
+ */
+function validateBirthDate(_birthDate) {
+   // console.log(_birthDate);
+    try {
+        const dateTest = new Date(_birthDate);
+        console.log(dateTest);
+        if(isNaN(dateTest)) {
+            throw new Error();
+        } 
+
+        return true;
+
+    } catch(error) {
+        console.log('Date non valide');
+        return false;
+    }   
 }
