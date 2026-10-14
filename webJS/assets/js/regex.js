@@ -1,9 +1,9 @@
 
-
 const mybtnSubmit= document.getElementById("valider");
 const txtName=document.querySelector("#myName");
 const chaine1 = document.querySelector("#myPassword1");
  const chaine2= document.querySelector("#myPassword2");
+ const txtPhone= document.querySelector("#myPhone");
 
 mybtnSubmit.addEventListener("click",
     function(event){
@@ -11,12 +11,12 @@ mybtnSubmit.addEventListener("click",
 
         const myForm=document.querySelector("form");
 
-        if (validateName(txtName.value)==true && validateName==true ) {
-       
-            myForm.submit();   
+        if (validateName(txtName.value)==true  && validatePhoneNumber(txtPhone.value)==true ) {
+        alert("formulaire OK");
+           // myForm.submit();   
         }else{
 
-            alert("saisie du nom incorrect! ou mot de passe différents");
+            alert("saisie du nom incorrect! numero faux ");
         }
 
     }
@@ -51,16 +51,25 @@ if (chaine1===chaine2) {
 }
 return false;
 }
-function validatePhoneNumber(_phoneNumber) {
+/**
+ * validation conformité du numero de téléphone * Remplacer les points et les espaces par une chaine vide.
+ * 0607080910
+ * +33607080910
+ * 01 / 02 / 03 / 04 / 05 / 06 / 07 / 09
+ * @param {} inputchaine 
+ * @returns
+ */
+function validatePhoneNumber(_inputchaine)
+{ let chaine=""+_inputchaine;
+    const regexDotSpace=/\.|\s/g; 
+ chaine =chaine.replaceAll(regexDotSpace,"");
+   const regexPhone= /^0[1-79][0-9]{8}$/g;
 
-    const regexPhone = /^0[1-7|9]\d{8}$/;
-    const regexDotsReplace = /\.|\s/g;
-    
-    _phoneNumber = _phoneNumber.trim();
-    _phoneNumber = _phoneNumber.replaceAll(regexDotsReplace, '');
-
- 
-
-    return regexPhone.test(_phoneNumber);
+     console.log("test");
+    if (regexPhone.test(chaine)) {
+ console.log(chaine);
+      
+        return true ;
+    }
+    return false;
 }
-
