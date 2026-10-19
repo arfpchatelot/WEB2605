@@ -12,14 +12,13 @@ const btnvalider= document.querySelector("#valider");
 
 
 btnvalider.addEventListener("click", (event)=>{
-
-    event.preventDefault();
+event.preventDefault();
 let nom =nomArt.value;
 let prixHT=parseFloat(prixArt_HT.value);
 let tva= parseFloat(taux_TVA.value);
 const monArticle= new Article(nom,prixHT,tva);
 
-    let monLi= document.createElement("li");
+let monLi= document.createElement("li");
     monLi.textContent="description Article - nom : "+ monArticle.nom +" de prix TTC :" + monArticle.calculPrixTTC(); 
     liste.appendChild(monLi);    
 
