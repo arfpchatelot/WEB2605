@@ -22,8 +22,11 @@ for (const key in myEmployee) {
   if (key == "salary") {
     myCell.textContent = myEmployee[key] + " €";
   } else if (key == "birthday") {
-    const tabDate = myEmployee[key].split("-");
-    myCell.textContent = tabDate[2] + "-" + tabDate[1] + "-" + tabDate[0];
+
+    const dateObj= new Date(myEmployee.birthday); 
+    //const tabDate = myEmployee[key].split("-");
+    // myCell.textContent = tabDate[2] + "-" + tabDate[1] + "-" + tabDate[0];
+    myCell.textContent=dateObj.toLocaleDateString("fr-FR");
   } else {
     myCell.textContent = myEmployee[key];
   }
