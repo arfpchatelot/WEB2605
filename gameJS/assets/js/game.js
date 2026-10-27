@@ -33,8 +33,31 @@ fetch("https://arfp.github.io/tp/web/javascript/03-cardgame/cardgame.json")
   })
   .then((data) => {
     displayTable(data);
+    let carteMax= rechercheMaxAttack(data);
+    const affichageCarte= document.querySelector("#carte_max") ;
+    for (const key in carteMax) {
+     const myItem = document.createElement("p");
+      myItem.innerText=key+ ":" + carteMax[key];
+      affichageCarte.appendChild(myItem);
+    }
     console.log(data);
   })
   .catch((error) => {
     console.error("Erreur lors de la récupération ou du parsing :", error);
   });
+
+  function rechercheMaxAttack(_data){
+       let carteMaxAttack= _data[0];
+       let valueMaxAttack= _data[0]["attack"];
+       for (let i = 1; i < _data.length; i++) {
+       if (_data[i].attack>valueMaxAttack) {
+        
+        valueMaxAttack=_data[i].attack;
+        carteMaxAttack=_data[i];
+       }
+        
+        
+       }
+       return carteMaxAttack
+
+  }
