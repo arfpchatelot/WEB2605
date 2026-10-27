@@ -12,3 +12,13 @@ margin: auto;
 border-collapse: collapse;
     
 }
+
+tbody tr:nth-child(2n){
+
+ background-color: #ccc;
+ 
+}
+tbody td {
+    padding: 8px;
+    
+ }
