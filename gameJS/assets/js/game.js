@@ -33,14 +33,30 @@ fetch("https://arfp.github.io/tp/web/javascript/03-cardgame/cardgame.json")
   })
   .then((data) => {
     displayTable(data);
-   let carteMax = rechercheMaxAttack(data);
-  // let carteMax=searchMaxAttackTri(data);
+  //  let carteMax = rechercheMaxAttack(data);
+    let carteMax=searchMaxAttackTri(data);
     const affichageCarte = document.querySelector("#card");
-    for (const key in carteMax) {
-      const myItem = document.createElement("p");
-      myItem.innerText = key + ":" + carteMax[key];
-      affichageCarte.appendChild(myItem);
-    }
+    const joueurH2= document.querySelector("h2");
+    joueurH2.innerText+= " "+ carteMax.name;
+    const txtPlayed= document.querySelector("#played");
+    const txtVictory=document.querySelector("#victory");
+    txtPlayed.innerText+=" "+carteMax.played+ " ";
+    txtVictory.innerText+=" "+carteMax.victory+" ";
+
+    const txtPower =document.getElementById("p");
+     const txtAttaque =document.getElementById("a");
+     const txtDefense= document.getElementById("d");
+     txtPower.innerText+= carteMax.power;
+     txtAttaque.innerText+=carteMax.attack;
+     txtDefense.innerText+=carteMax.armor;
+    txtPower.style.color="violet";
+    txtAttaque.style.color="red";
+    txtDefense.style.color="blue";
+      // for (const key in carteMax) {
+    //   const myItem = document.createElement("p");
+    //   myItem.innerText = key + ":" + carteMax[key];
+    //   affichageCarte.appendChild(myItem);
+    // }
     console.log(data);
   })
   .catch((error) => {
