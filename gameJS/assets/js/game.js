@@ -40,18 +40,18 @@ btnPower.addEventListener("click", function(){
 let carteMax=searchMaxAttackTri(data,"power");
     const affichageCarte = document.querySelector("#card");
     const joueurH2= document.querySelector("h2");
-    joueurH2.innerText+= " "+ carteMax.name;
+    joueurH2.innerText = "Nom du joueur :"+ carteMax.name;
     const txtPlayed= document.querySelector("#played");
     const txtVictory=document.querySelector("#victory");
-    txtPlayed.innerText+=" "+carteMax.played+ " ";
-    txtVictory.innerText+=" "+carteMax.victory+" ";
+    txtPlayed.innerText="Played : "+carteMax.played+ " ";
+    txtVictory.innerText="victory : "+carteMax.victory+" ";
 
     const txtPower =document.getElementById("p");
      const txtAttaque =document.getElementById("a");
      const txtDefense= document.getElementById("d");
-     txtPower.innerText+= carteMax.power;
-     txtAttaque.innerText+=carteMax.attack;
-     txtDefense.innerText+=carteMax.armor;
+     txtPower.innerText= carteMax.power;
+     txtAttaque.innerText=carteMax.attack;
+     txtDefense.innerText=carteMax.armor;
     txtPower.style.color="violet";
     txtAttaque.style.color="red";
     txtDefense.style.color="blue";
@@ -62,23 +62,46 @@ btnAttack.addEventListener("click", function(){
 let carteMax=searchMaxAttackTri(data,"attack");
     const affichageCarte = document.querySelector("#card");
     const joueurH2= document.querySelector("h2");
-    joueurH2.innerText+= " "+ carteMax.name;
+    joueurH2.innerText= "Nom du joueur :"+ carteMax.name;
     const txtPlayed= document.querySelector("#played");
     const txtVictory=document.querySelector("#victory");
-    txtPlayed.innerText+=" "+carteMax.played+ " ";
-    txtVictory.innerText+=" "+carteMax.victory+" ";
+    txtPlayed.innerText="Played :  "+carteMax.played+ " ";
+    txtVictory.innerText="victory : "+carteMax.victory+" ";
 
     const txtPower =document.getElementById("p");
      const txtAttaque =document.getElementById("a");
      const txtDefense= document.getElementById("d");
-     txtPower.innerText+= carteMax.power;
-     txtAttaque.innerText+=carteMax.attack;
-     txtDefense.innerText+=carteMax.armor;
+     txtPower.innerText= carteMax.power;
+     txtAttaque.innerText=carteMax.attack;
+     txtDefense.innerText=carteMax.armor;
     txtPower.style.color="violet";
     txtAttaque.style.color="red";
     txtDefense.style.color="blue";
 
 } )
+const btnArmor= document.querySelector("#btnDefense");
+btnArmor.addEventListener("click", ()=>{
+let carteMax=searchMaxAttackTri(data,"armor");
+    const affichageCarte = document.querySelector("#card");
+    const joueurH2= document.querySelector("h2");
+    joueurH2.innerText = "Nom du joueur :"+ carteMax.name;
+    const txtPlayed= document.querySelector("#played");
+    const txtVictory=document.querySelector("#victory");
+    txtPlayed.innerText="Played : "+carteMax.played+ " ";
+    txtVictory.innerText="victory : "+carteMax.victory+" ";
+
+    const txtPower =document.getElementById("p");
+     const txtAttaque =document.getElementById("a");
+     const txtDefense= document.getElementById("d");
+     txtPower.innerText= carteMax.power;
+     txtAttaque.innerText=carteMax.attack;
+     txtDefense.innerText=carteMax.armor;
+    txtPower.style.color="violet";
+    txtAttaque.style.color="red";
+    txtDefense.style.color="blue";
+
+})
+
     
       // for (const key in carteMax) {
     //   const myItem = document.createElement("p");
