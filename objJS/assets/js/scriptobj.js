@@ -36,11 +36,11 @@ function verifBirthday( _chainedate){
         console.log(dateTest);
         const today= new Date();
       if(isNaN(dateTest) || dateTest>today ) {
-            throw new Error();
+            throw new Error("La date est invalide ou postérieure à aujourd'hui.");
         } 
         return true;
     } catch(error) {
-        alert('Date non valide'+ error);
+        alert('Date non valide'+ error.message);
         return false;
     }   
 }
@@ -59,6 +59,8 @@ function majFormu(_monObjet) {
   txtSalary.value = _monObjet.salary;
 }
 majFormu(myEmployee);
+
+
 
 const btnValidation = document.querySelector("#btnValidation");
 btnValidation.addEventListener("click", function (event) {
