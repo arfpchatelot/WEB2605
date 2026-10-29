@@ -35,7 +35,7 @@ height: auto;
 *{ box-sizing: border-box;
  
 }
-body {
+main {
 display: flex;
 flex-direction: row;
 justify-content:space-around ;
@@ -75,13 +75,13 @@ color: #fff;
     height: 100px;
 }
 #test:hover {
- transform:scale(1.25);
+ transform:scale(120%);
  transform-origin: 50% 50%;   
 cursor: pointer;
-transition-property: all;
-transition-duration: 500ms;
+/* transition-property: all;
+transition-duration: 500ms; */
 /* transition-timing-function: ease; */
-transition-timing-function:ease-in-out  ;
+/* transition-timing-function:ease-in-out  ; */
 
 /* transition-delay: 500ms; */
 }
@@ -103,33 +103,55 @@ transition-timing-function:ease ;
 }
 /*----------------------------------- Animation ---------------------------------------------*/
 .animation-box {
+
+    /*etape 1 */
+    margin:auto;
     padding: 20px;
     text-align: center;
     color: #fff;
     font-weight: bold;
     font-variant: small-caps;
-  width: 100px;
+
+   width: 100px; 
   height: 100px;
   background-color: #3498db;
-  /* Appel de l'animation : nom, durée, type de transition, répétition infinie et aller-retour */
-  animation: transformer 5s ease-in-out infinite alternate;
+ /* Appel de l'animation : nom, durée, vitesse type de transition, répétition et aller-retour */
+  animation: mouve 3s ease-in-out  2 alternate forwards;
+/* etape2
+pivotement 45deg
+cercle rouge
+etape 3
+pivotement 180deg
+zoom 1.5
+carré vert pomme
+*/
+/* animation: transformer 5s ease-in-out infinite alternate; */
 }
 
 /* Définition des étapes de l'animation */
-@keyframes transformer {
-  0% {
-    transform: rotate(0deg) scale(1);
+@keyframes mouve {
+0% {  
+ transform: rotate(0deg) scale(1);
     border-radius: 0%;
-    background-color: #3498db;
-  }
-  50% {
-    transform: rotate(180deg) scale(1.2);
-    border-radius: 25%;
-    background-color: #e74c3c;
-  }
-  100% {
-    transform: rotate(360deg) scale(1);
-    border-radius: 50%;
-    background-color: #2ecc71;
-  }
+      background-color: #3498db;
+
+}
+50%{
+  transform: rotate(180deg);
+  border-radius: 50%;   
+  background-color: #ff4400;  
+}
+100%{
+    transform: rotate(180deg) scale(1.5);
+border-radius: 0;
+background-color: #25aa00;
+}
+
+
+}
+
+footer{
+
+    background-color: #aaa;
+    padding: 40px; 
 }

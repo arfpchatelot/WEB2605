@@ -34,7 +34,10 @@ fetch("https://arfp.github.io/tp/web/javascript/03-cardgame/cardgame.json")
   .then((data) => {
     displayTable(data);
   //  let carteMax = rechercheMaxAttack(data);
-    let carteMax=searchMaxAttackTri(data);
+
+  const btnPower= document.querySelector("#btnPower");
+btnPower.addEventListener("click", function(){ 
+let carteMax=searchMaxAttackTri(data,"power");
     const affichageCarte = document.querySelector("#card");
     const joueurH2= document.querySelector("h2");
     joueurH2.innerText+= " "+ carteMax.name;
@@ -52,6 +55,31 @@ fetch("https://arfp.github.io/tp/web/javascript/03-cardgame/cardgame.json")
     txtPower.style.color="violet";
     txtAttaque.style.color="red";
     txtDefense.style.color="blue";
+
+} )
+const btnAttack= document.querySelector("#btnAttack");
+btnAttack.addEventListener("click", function(){ 
+let carteMax=searchMaxAttackTri(data,"attack");
+    const affichageCarte = document.querySelector("#card");
+    const joueurH2= document.querySelector("h2");
+    joueurH2.innerText+= " "+ carteMax.name;
+    const txtPlayed= document.querySelector("#played");
+    const txtVictory=document.querySelector("#victory");
+    txtPlayed.innerText+=" "+carteMax.played+ " ";
+    txtVictory.innerText+=" "+carteMax.victory+" ";
+
+    const txtPower =document.getElementById("p");
+     const txtAttaque =document.getElementById("a");
+     const txtDefense= document.getElementById("d");
+     txtPower.innerText+= carteMax.power;
+     txtAttaque.innerText+=carteMax.attack;
+     txtDefense.innerText+=carteMax.armor;
+    txtPower.style.color="violet";
+    txtAttaque.style.color="red";
+    txtDefense.style.color="blue";
+
+} )
+    
       // for (const key in carteMax) {
     //   const myItem = document.createElement("p");
     //   myItem.innerText = key + ":" + carteMax[key];
@@ -74,7 +102,9 @@ function rechercheMaxAttack(_data) {
   }
   return carteMaxAttack;
 }
-function searchMaxAttackTri(_data) {
-  const tabDecroissant = _data.sort((a, b) =>b.attack-a.attack);
+function searchMaxAttackTri(_data, _critere) {
+  const tabDecroissant = _data.sort((a, b) =>b[_critere]-a[_critere]);
   return tabDecroissant[0];
 }
+
+

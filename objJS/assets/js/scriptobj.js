@@ -30,6 +30,20 @@ for (const key in myEmployee) {
     myCell.textContent = myEmployee[key];
   }
 }
+function verifBirthday( _chainedate){
+ try {
+        const dateTest = new Date(_chainedate);
+        console.log(dateTest);
+        const today= new Date();
+      if(isNaN(dateTest) || dateTest>today ) {
+            throw new Error();
+        } 
+        return true;
+    } catch(error) {
+        alert('Date non valide'+ error);
+        return false;
+    }   
+}
 
 function majFormu(_monObjet) {
   const txtNom = document.getElementById("txtNom");
@@ -51,25 +65,29 @@ btnValidation.addEventListener("click", function (event) {
   event.preventDefault();
   myEmployee.lastname = txtNom.value;
   myEmployee.firstname = txtPrenom.value;
-  if (txtBirthday.value != myEmployee.birthday) {
+  if (verifBirthday(txtBirthday.value) && myEmployee.birthday) {
+     myEmployee.birthday = txtBirthday.value;
+  }
+
+  // if (txtBirthday.value != myEmployee.birthday) {
     
-      const dateNaissance = new Date(txtBirthday.value);
-      const datejour = new Date();
-      if( isNaN(dateNaissance))
-      {
-        return console.error(" date erronée");
-      }
-      if (datejour < dateNaissance) {
-        console.error("La date doit être dans le  passé");
-      } else {
-        myEmployee.birthday = txtBirthday.value;
-      }
+  //     const dateNaissance = new Date(txtBirthday.value);
+  //     const datejour = new Date();
+  //     if( isNaN(dateNaissance))
+  //     {
+  //       return console.error(" date erronée");
+  //     }
+  //     if (datejour < dateNaissance) {
+  //       console.error("La date doit être dans le  passé");
+  //     } else {
+  //       myEmployee.birthday = txtBirthday.value;
+  //     }
 
   
      
-  } else {
-    myEmployee.birthday = txtBirthday.value;
-  }
+  // } else {
+  //   myEmployee.birthday = txtBirthday.value;
+  // }
   if(parseFloat(txtSalary.value) >  myEmployee.salary ){
   myEmployee.salary = parseFloat(txtSalary.value);
 }
