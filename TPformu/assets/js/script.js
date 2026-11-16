@@ -25,21 +25,12 @@ const list2= document.getElementById("projet");
 let tabData= machaine.split(", ");
 for (let i = 0; i < tabData.length; i++) {
     //console.log(tabData[i]);
-    if(i==5){
- const myOption= new Option();
-    myOption.value=i+1;
-    myOption.defaultSelected=true;
-    myOption.textContent=tabData[i];
-    list2.options[i]=myOption;
-    }
-    else{
- const myOption= new Option();
-    myOption.value=i+1;
-    myOption.textContent=tabData[i];
-    list2.options[i]=myOption;
 
-    }
-   
+ const myOption= new Option();
+    myOption.value=i+1;
+   // myOption.defaultSelected=true;
+    myOption.textContent=tabData[i];
+    list2.options[i+1]=myOption;   
 }
 
 
