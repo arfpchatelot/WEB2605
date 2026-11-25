@@ -51,11 +51,9 @@ function creerTableau(_data) {
         insertAge = yearNow - monObjet.employee_age;
         cellYear.textContent = insertAge;
     }
-    const sum = _data.reduce(
-        (accumulator, currentValue) =>
-            accumulator + Math.round((currentValue.employee_salary / 12) * 100) / 100,
-        0,
-    );
+    const initialValue= 0;
+    const sum= _data.reduce((accumulator, employe) =>accumulator+ Math.round((employe.employee_salary/12)*100)/100 ,initialValue );
+
 
     let row = corpstableau.insertRow();
     let cellnbEmployes = row.insertCell();
@@ -67,30 +65,54 @@ function creerTableau(_data) {
     row.insertCell();
 }
 
-// fetch("./assets/employes.json")
-// .then(response => { return response.json()})
-// .then((response) => {
+const zoneSearch=document.getElementById("mySearch");
+const btnSearch=document.querySelector("#btnSearch");
 
-// tabledata = response.data;
-// creerTableau(tabledata);
-// console.log(tabledata);
+fetch("./assets/employes.json")
+.then(response => { return response.json()})
+.then((response) => {
 
-// })
+tabledata = response.data;
+creerTableau(tabledata);
+console.log(tabledata);
 
-async function loadEmployee() {
-    try {
-        const response = await fetch("./assets/employes.json");
-        if (response.status != 200) {
-            throw new Error(`erreur http : ${response.status}`);
-        }
-        const mydata = await response.json();
-        tabledata = [];
-        tabledata = mydata.data;
-        creerTableau(tabledata);
-        console.log(mydata);
-    } catch (error) {
-        console.error("impossible de charger les objets", error);
-    }
-}
+btnSearch.addEventListener("click", function () {
+    // let myEmploye= tabledata.find((obj)=> (obj.employee_name).toLowerCase()==(zoneSearch.value).toLowerCase().trim() );
+    // console.log(myEmploye);
 
-loadEmployee();
+    let tabSenior= tabledata.filter((employe)=> employe.employee_age> parseInt(zoneSearch.value));
+    console.log(tabSenior);
+// for (let i = 0; i < tabSenior.length; i++) {
+   
+    
+// }
+
+    
+})
+
+   
+
+
+})
+
+
+// async function loadEmployee() {
+//     try {
+//         const response = await fetch("./assets/employes.json");
+//         if (response.status != 200) {
+//             throw new Error(`erreur http : ${response.status}`);
+//         }
+//         const mydata = await response.json();
+//         tabledata = [];
+//         tabledata = mydata.data;
+//         creerTableau(tabledata);
+//         console.log(mydata);
+
+
+
+//     } catch (error) {
+//         console.error("impossible de charger les objets", error);
+//     }
+// }
+
+// loadEmployee();
